@@ -1,0 +1,11 @@
+RewriteEngine on
+
+#route all non-existant image requests through implace
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING}     implace=([^&]*)    [NC]
+RewriteRule (.*\.(gif|jpg|jpeg|png|webp|wbmp))$ implace/implace.php?f=$1&implace=error:404;%1 [NC]
+
+#route existing images with query strings through implace
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{QUERY_STRING}     implace=([^&]*)    [NC]
+RewriteRule (.*\.(gif|jpg|jpeg|png|webp|wbmp))$ implace/implace.php?f=$1&implace=%1 [NC]
