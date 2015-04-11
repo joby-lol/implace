@@ -2,7 +2,8 @@
 //if (_IMPLACE!='TRUE') {die("improperly calling implace");}
 
 $IMPLACE_CONFIG = [
-	,"CACHE_DIR"			=> "implace/cache"	//relative to ROOT_PATH, needs to be public if PASSTHOUGH_IMAGES is false
+	 "CACHE_IN_PLACE"		=> false 			//attempt to place generated files next to the originals -- good for static sites
+	,"CACHE_DIR"			=> "implace/cache"	//ignored if CACHE_IN_PLACE=true, relative to ROOT_PATH
 	,"DISABLE_CACHE"		=> false 			//always regenerate files, always turn this off in production
 	,"PASSTHROUGH_IMAGES"	=> true 			//instead of redirecting to images, pass them through (harder on server, marginally faster for user)
 	,"DEBUG_OUTPUT"			=> false 			//output text results instead of finishing
