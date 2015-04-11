@@ -20,6 +20,9 @@ if (_IMPLACE!='TRUE' || time()-$last_cron_run >= $IMPLACE_CONFIG['POOR_MANS_CRON
 	$when_to_stop += (_IMPLACE!='TRUE')?$IMPLACE_CONFIG['POOR_MANS_CRON_MAX']:$IMPLACE_CONFIG['CRON_MAX'];
 	//clean up cache directory
 	function IMPLACE_CLEAN_CACHE ($path,$min_ts,$when_to_stop,$first_layer=false) {
+		if (time() > $when_to_stop) {
+			return;
+		}
 		$files = scandir($path);
 		$file_count = 0;
 		foreach ($files as $i => $file) {

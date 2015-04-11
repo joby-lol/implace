@@ -10,7 +10,7 @@ $IMPLACE_CONFIG = [
 	,"JPEG_QUALITY"			=> 80
 	,"PNG_COMPRESSION"		=> 9
 
-	,"POOR_MANS_CRON"		=> 60*60*12			//how frequently in seconds to run cron as part of a normal request
+	,"POOR_MANS_CRON"		=> 60*60*12			//how frequently in seconds to run cron as part of a normal request, set to false to only run cron manually
 	,"POOR_MANS_CRON_MAX"	=> 5				//how many seconds poor man's cron can run
 	,"CRON_KEY"				=> false 			//text key that must be added to manual cron requests
 	,"CRON_MAX"				=> 15				//how many seconds regular cron can run
