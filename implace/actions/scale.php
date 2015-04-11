@@ -24,7 +24,7 @@ function implace_action_scale_settings_cleanup ($settings) {
 	}
 
 	$settings_out = join('x',$settings[0]);
-	if ($settings[1] == '') {$settings_out .= '-'.$settings[1];}
+	if ($settings[1] != '') {$settings_out .= '-'.$settings[1];}
 	return $settings_out;
 }
 

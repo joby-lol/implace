@@ -14,7 +14,7 @@ function IMPLACE_DISPLAY () {
 		//do nothing
 	}elseif ($IMPLACE_CONFIG['PASSTHROUGH_IMAGES']) {
 		//set content-type
-		switch ($IMPLACE_JOB['IMAGE_EXTENSION']) {
+		switch (strtolower($IMPLACE_JOB['IMAGE_EXTENSION'])) {
 			case 'gif':
 				header("Content-Type: image/gif");
 				break;
@@ -163,28 +163,28 @@ if (!$IMPLACE_JOB['LOADED_FROM_CACHE']) {
 		//create the file
 		touch($IMPLACE_JOB['IMAGE_GENERATED_PATH']);
 		//output from gd
-		switch ($IMPLACE_JOB['IMAGE_EXTENSION']) {
-		case 'gif':
-			imagegif($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
-			break;
-		case 'jpeg':
-			imagejpeg($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['JPEG_QUALITY']);
-			break;
-		case 'jpg':
-			imagejpeg($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['JPEG_QUALITY']);
-			break;
-		case 'png':
-			imagepng($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['PNG_COMPRESSION']);
-			break;
-		case 'wbmp':
-			imagewbmp($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
-			break;
-		case 'webp':
-			imagewebp($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
-			break;
-		default:
-			IMPLACE_ERROR(500);
-	}
+		switch (strtolower($IMPLACE_JOB['IMAGE_EXTENSION'])) {
+			case 'gif':
+				imagegif($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
+				break;
+			case 'jpeg':
+				imagejpeg($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['JPEG_QUALITY']);
+				break;
+			case 'jpg':
+				imagejpeg($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['JPEG_QUALITY']);
+				break;
+			case 'png':
+				imagepng($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH'],$IMPLACE_CONFIG['PNG_COMPRESSION']);
+				break;
+			case 'wbmp':
+				imagewbmp($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
+				break;
+			case 'webp':
+				imagewebp($IMPLACE_JOB['IMAGE'],$IMPLACE_JOB['IMAGE_GENERATED_PATH']);
+				break;
+			default:
+				IMPLACE_ERROR(500);
+		}
 
 	//redirect to it
 	IMPLACE_DISPLAY();

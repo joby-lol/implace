@@ -34,8 +34,11 @@ function IMPLACE_ERROR($number) {
 	if (!is_file($IMPLACE_CONFIG['IMPLACE_PATH'].$error_file)) {
 		$error_file = '/error/500.png';
 	}
-	echo("IMPLACE ERROR\n");
-	echo("Location: ".$IMPLACE_CONFIG['IMPLACE_URL']."$error_file\n");
+	if ($IMPLACE_CONFIG['DEBUG_OUTPUT']) {
+		echo("IMPLACE ERROR $number\n");
+	}else {
+		header("Location: ".$IMPLACE_CONFIG['IMPLACE_URL']."$error_file\n");
+	}
 }
 
 //check for errors first
