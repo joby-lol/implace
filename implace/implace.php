@@ -6,6 +6,7 @@ $IMPLACE_JOB = [
 	 "EXECUTION_START" => microtime(true)
 	,"REQUEST_FILE" => $_GET['f']
 	,"REQUEST_ACTIONS" => $_GET['implace']
+	,"LOADED_FROM_CACHE" => false
 ];
 //don't allow shenanigans with the filename, if it's being used correctly there will be none of this
 $IMPLACE_JOB["REQUEST_FILE"] = str_replace('./', '', $IMPLACE_JOB["REQUEST_FILE"]);
